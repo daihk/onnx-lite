@@ -12,7 +12,7 @@ jobs:
       env:
         CC: gcc
         CXX: g++
-      run: sudo apt-get install libprotobuf-dev protobuf-compiler libopencv-dev flatbuffers-compiler
+      run: sudo apt-get install libprotobuf-dev protobuf-compiler libopencv-dev flatbuffers-compiler flatbuffers-compiler-dev
     - name: build
       run: | 
         mkdir build && cd build && cmake .. -DCMAKE_BUILD_TYPE=Release
