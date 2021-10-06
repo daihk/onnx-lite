@@ -12,7 +12,7 @@ jobs:
       env:
         CC: gcc
         CXX: g++
-      run: apt install libprotobuf-dev
+      run: sudo apt-get install libprotobuf-dev protobuf-compiler libopencv-dev
     - name: build
       run: | 
         mkdir build && cd build && cmake .. -DCMAKE_BUILD_TYPE=Release
