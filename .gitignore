@@ -30,3 +30,15 @@
 *.exe
 *.out
 *.app
+
+# Large file
+*.swp
+*.dot
+*.png
+
+# models
+*.onnx
+*.prototxt
+*.caffemodel
+build
+

@@ -1,0 +1,8 @@
+namespace onnx_flat;
+
+table Float { v:float; }
+table Double{ v:double; }
+table Int   { v:int; }
+table UInt  { v:uint; }
+table Long  { v:long; }
+table ULong { v:ulong; }

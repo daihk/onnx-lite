@@ -1,0 +1,198 @@
+// Generated from onnx_flat.proto
+// Modify base type by onnx_flat-flat
+
+include "../base.fbs";
+
+
+namespace onnx_flat;
+
+enum Version : int {
+  _START_VERSION = 0,
+  IR_VERSION_2017_10_10 = 1,
+  IR_VERSION_2017_10_30 = 2,
+  IR_VERSION = 3,
+}
+
+namespace onnx_flat.AttributeProto_;
+
+enum AttributeType : int {
+  UNDEFINED = 0,
+  FLOAT = 1,
+  INT = 2,
+  STRING = 3,
+  TENSOR = 4,
+  GRAPH = 5,
+  FLOATS = 6,
+  INTS = 7,
+  STRINGS = 8,
+  TENSORS = 9,
+  GRAPHS = 10,
+}
+
+namespace onnx_flat.TensorProto_;
+
+enum DataType : int {
+  UNDEFINED = 0,
+  FLOAT = 1,
+  UINT8 = 2,
+  INT8 = 3,
+  UINT16 = 4,
+  INT16 = 5,
+  INT32 = 6,
+  INT64 = 7,
+  STRING = 8,
+  BOOL = 9,
+  FLOAT16 = 10,
+  DOUBLE = 11,
+  UINT32 = 12,
+  UINT64 = 13,
+  COMPLEX64 = 14,
+  COMPLEX128 = 15,
+}
+
+namespace onnx_flat;
+
+table AttributeProto {
+  name:string;
+  ref_attr_name:string;
+  doc_string:string;
+  type:onnx_flat.AttributeProto_.AttributeType;
+  f:Float;
+  i:Long;
+  s:[ubyte];
+  t:onnx_flat.TensorProto;
+  g:onnx_flat.GraphProto;
+  floats:[float];
+  ints:[long];
+  strings:[string];
+  tensors:[onnx_flat.TensorProto];
+  graphs:[onnx_flat.GraphProto];
+}
+
+table ValueInfoProto {
+  name:string;
+  type:onnx_flat.TypeProto;
+  doc_string:string;
+}
+
+table NodeProto {
+  input:[string];
+  output:[string];
+  name:string;
+  op_type:string;
+  domain:string;
+  attribute:[onnx_flat.AttributeProto];
+  doc_string:string;
+}
+
+table ModelProto {
+  ir_version:Long;
+  opset_import:[onnx_flat.OperatorSetIdProto];
+  producer_name:string;
+  producer_version:string;
+  domain:string;
+  model_version:Long;
+  doc_string:string;
+  graph:onnx_flat.GraphProto;
+  metadata_props:[onnx_flat.StringStringEntryProto];
+}
+
+table StringStringEntryProto {
+  key:string;
+  value:string;
+}
+
+table GraphProto {
+  node:[onnx_flat.NodeProto];
+  name:string;
+  initializer:[onnx_flat.TensorProto];
+  doc_string:string;
+  input:[onnx_flat.ValueInfoProto];
+  output:[onnx_flat.ValueInfoProto];
+  value_info:[onnx_flat.ValueInfoProto];
+}
+
+table TensorProto {
+  dims:[long];
+  data_type:onnx_flat.TensorProto_.DataType;
+  segment:onnx_flat.TensorProto_.Segment;
+  float_data:[float];
+  int32_data:[int];
+  string_data:[string];
+  int64_data:[long];
+  name:string;
+  doc_string:string;
+  raw_data:[ubyte];
+  double_data:[double];
+  uint64_data:[ulong];
+}
+
+namespace onnx_flat.TensorProto_;
+
+table Segment {
+  begin:Long;
+  end:Long;
+}
+
+namespace onnx_flat;
+
+table TensorShapeProto {
+  dim:[onnx_flat.TensorShapeProto_.Dimension];
+}
+
+namespace onnx_flat.TensorShapeProto_;
+
+table Dimension {
+  value:onnx_flat.TensorShapeProto_.Dimension_.Anonymous0;
+  denotation:string;
+}
+
+namespace onnx_flat.TensorShapeProto_.Dimension_;
+
+table Anonymous0 {
+  dim_value:Long;
+  dim_param:string;
+}
+
+namespace onnx_flat;
+
+table DenotationConstProto {
+  DATA_BATCH:string;
+  DATA_CHANNEL:string;
+  DATA_TIME:string;
+  DATA_FEATURE:string;
+  FILTER_IN_CHANNEL:string;
+  FILTER_OUT_CHANNEL:string;
+  FILTER_SPATIAL:string;
+}
+
+table TypeProto {
+  value:onnx_flat.TypeProto_.Anonymous1;
+  denotation:string;
+}
+
+namespace onnx_flat.TypeProto_;
+
+table Tensor {
+  elem_type:onnx_flat.TensorProto_.DataType;
+  shape:onnx_flat.TensorShapeProto;
+}
+
+table Anonymous1 {
+  tensor_type:onnx_flat.TypeProto_.Tensor;
+}
+
+namespace onnx_flat;
+
+table TypeDenotationConstProto {
+  TENSOR:string;
+  IMAGE:string;
+  AUDIO:string;
+  TEXT:string;
+}
+
+table OperatorSetIdProto {
+  domain:string;
+  version:Long;
+}
+
