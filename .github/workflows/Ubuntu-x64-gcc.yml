@@ -12,6 +12,8 @@ jobs:
       env:
         CC: gcc
         CXX: g++
-      run:  mkdir build && cd build && cmake .. -DCMAKE_BUILD_TYPE=Release
+      run: apt install libprotobuf-dev
     - name: build
-      run:  cmake --build build -j 2
+      run: | 
+        mkdir build && cd build && cmake .. -DCMAKE_BUILD_TYPE=Release
+        cmake --build build -j 2
